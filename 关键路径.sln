@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "关键路径(matrix)", "关键路径(matrix)\关键路径(matrix).vcxproj", "{C887B0E7-03EB-4DCD-A2DF-BB73F06FE895}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C887B0E7-03EB-4DCD-A2DF-BB73F06FE895}.Debug|x64.ActiveCfg = Debug|x64
+		{C887B0E7-03EB-4DCD-A2DF-BB73F06FE895}.Debug|x64.Build.0 = Debug|x64
+		{C887B0E7-03EB-4DCD-A2DF-BB73F06FE895}.Debug|x86.ActiveCfg = Debug|Win32
+		{C887B0E7-03EB-4DCD-A2DF-BB73F06FE895}.Debug|x86.Build.0 = Debug|Win32
+		{C887B0E7-03EB-4DCD-A2DF-BB73F06FE895}.Release|x64.ActiveCfg = Release|x64
+		{C887B0E7-03EB-4DCD-A2DF-BB73F06FE895}.Release|x64.Build.0 = Release|x64
+		{C887B0E7-03EB-4DCD-A2DF-BB73F06FE895}.Release|x86.ActiveCfg = Release|Win32
+		{C887B0E7-03EB-4DCD-A2DF-BB73F06FE895}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98DA000F-1EC8-4DCD-9354-2DDB37CA899E}
+	EndGlobalSection
+EndGlobal
