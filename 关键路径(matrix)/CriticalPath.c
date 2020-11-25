@@ -1,15 +1,16 @@
 #include"CriticalPath.h"
 
-void InitCriticalPathArray(MGraph G, int** Ve, int** Vl)	//初始化关键路径算法
+void InitCriticalPathArray(MGraph G, unsigned int** Ve, unsigned int** Vl)	//初始化关键路径算法
 {
-		  *Ve = (int*)malloc(sizeof(int) * G.vexnum);
-		  *Vl = (int*)malloc(sizeof(int) * G.vexnum);
+		  *Ve = (unsigned int*)malloc(sizeof(int) * G.vexnum);
+		  *Vl = (unsigned int*)malloc(sizeof(int) * G.vexnum);
 		  assert(*Ve != NULL || *Vl != NULL);
-		  memset(*Ve, 0, sizeof(int) * G.vexnum);
-		  memset(*Vl, 0, sizeof(int) * G.vexnum);
+		  memset(*Ve, 0, sizeof(unsigned int) * G.vexnum);
+		  **Vl = 0;
+		  memset(*Vl + 1, INFINITYSIZE, sizeof(unsigned int) * (G.vexnum - 1));		//初始化应该为最大值
 }
 
-void DestroyCriticalPathArray(int* Ve, int* Vl)		  //销毁关键路径数组
+void DestroyCriticalPathArray(unsigned int* Ve, unsigned int* Vl)		  //销毁关键路径数组
 {
 		  free(Ve);
 		  free(Vl);
@@ -17,8 +18,8 @@ void DestroyCriticalPathArray(int* Ve, int* Vl)		  //销毁关键路径数组
 
 void CriticalPath(MGraph G)			//关键路径算法
 {
-		  int* Ve = NULL;				//Ve：最早发生时间Ve (k)
-		  int* Vl = NULL;				//Vl：最迟发生时间Vl (k)
+		  unsigned int* Ve = NULL;				//Ve：最早发生时间Ve (k)
+		  unsigned int* Vl = NULL;				//Vl：最迟发生时间Vl (k)
 		  InitCriticalPathArray(G, &Ve, &Vl);		  //初始化
 
 		  //求解Ve数组：最早发生时间
@@ -26,20 +27,21 @@ void CriticalPath(MGraph G)			//关键路径算法
 		  {
 					for (int pos = FindFirstNeighbor(G, G.Vex[i]); pos != -1; pos = FindNextNeighbor(G, G.Vex[i], G.Vex[pos]))
 					{
-							  if (Ve[i] + G.Edge[i][pos] > Ve[pos])
+							  if (Ve[i] + G.Edge[i][pos] > Ve[pos])				//找最大
 							  {
 										Ve[pos] = Ve[i] + G.Edge[i][pos];
 							  }
 					}
 		  }
 
+		  printf("\n");
 		  //求解Vl数组：最迟发生时间
 		  Vl[G.vexnum - 1] = Ve[G.vexnum - 1];		  //Ve最早发生时间与Vl最晚发生时间相同
 		  for (int i = G.vexnum - 2; i > 0; --i)
 		  {
 					for (int pos = FindFirstNeighbor(G, G.Vex[i]); pos != -1; pos = FindNextNeighbor(G, G.Vex[i], G.Vex[pos]))
 					{
-							  if (Vl[pos] - G.Edge[i][pos]  >Vl[i])
+							  if (Vl[pos] - G.Edge[i][pos]  <Vl[i])				//找最小
 							  {
 										Vl[i] = Vl[pos] - G.Edge[i][pos];
 							  }
